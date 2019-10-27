@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+answer = Answer.create([{body: "some answer", correct: true}, {body: "some answer#2", correct: false}])
+
+category = Category.create(title: "math")
+
+question = Question.create(body: "some question")
+
+test_var = Test.create(title: "test name", level: "2")
+
+user = User.create(username: "user1")
