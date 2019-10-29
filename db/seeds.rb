@@ -6,12 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-answer = Answer.create([{body: "some answer", correct: true}, {body: "some answer#2", correct: false}])
+answer = Answer.create!([
+						 {body: "some answer", correct: true},
+						 {body: "some answer#2", correct: false}
+						])
 
-category = Category.create(title: "math")
+category = Category.create!(title: "math")
 
-question = Question.create(body: "some question")
+question = Question.create!(body: "some question")
 
-test_var = Test.create(title: "test name", level: "2")
+test_var = Test.create!([
+						 {title: "test 1", level: "2"},
+						 {title: "test 2", level: "1"},
+						 {title: "test 3", level: "3"},
+						 {title: "test 4", level: "5"},
+						 {title: "test 5", level: "3"},
+						 {title: "test 6", level: "3"}
+						])
 
-user = User.create(username: "user1")
+user = User.create!(username: "user1")
