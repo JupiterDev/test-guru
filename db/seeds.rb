@@ -6,22 +6,33 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-answer = Answer.create!([
-						 {body: "some answer", correct: true},
-						 {body: "some answer#2", correct: false}
-						])
+categories = Category.create!([
+							   {title: "math"},
+							   {title: "routing and switching"},
+							   {title: "backend programming"},
+							   {title: "frontend programming"},
+  ])
 
-category = Category.create!(title: "math")
+tests_var = Test.create!([
+						  {title: "test 1", level: rand(1..5), category_id: categories.sample.id},
+						  {title: "test 2", level: rand(1..5), category_id: categories.sample.id},
+						  {title: "test 3", level: rand(1..5), category_id: categories.sample.id},
+						  {title: "test 4", level: rand(1..5), category_id: categories.sample.id},
+						  {title: "test 5", level: rand(1..5), category_id: categories.sample.id},
+						  {title: "test 6", level: rand(1..5), category_id: categories.sample.id}
+])
 
-question = Question.create!(body: "some question")
+question = Question.create!(body: "some question", test_id: tests_var.first.id)
 
-test_var = Test.create!([
-						 {title: "test 1", level: "2"},
-						 {title: "test 2", level: "1"},
-						 {title: "test 3", level: "3"},
-						 {title: "test 4", level: "5"},
-						 {title: "test 5", level: "3"},
-						 {title: "test 6", level: "3"}
+answers = Answer.create!([
+						  {body: "some answer", correct: true, question_id: question.id},
+						  {body: "some answer#2", correct: false, question_id: question.id}
 						])
 
 user = User.create!(username: "user1")
+
+selected_tests = SelectedTest.create!([
+									   {user_id: user.id, test_id: tests_var[2].id},
+									   {user_id: user.id, test_id: tests_var[4].id},
+									   {user_id: user.id, test_id: tests_var[5].id}
+									 ])
