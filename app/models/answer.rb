@@ -1,3 +1,3 @@
 class Answer < ApplicationRecord
-	has_and_belongs_to_many :questions        # ответ может принадлежать нескольким вопросам 
+	belongs_to :question        # ответ принадлежит одному вопросу 
 end

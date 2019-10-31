@@ -1,4 +1,4 @@
 class Question < ApplicationRecord
-  has_and_belongs_to_many :tests          # вопрос может принадежать нескольким тестам
-  has_and_belongs_to_many :answers        # один вопрос может иметь много ответов
+  belongs_to :test                             # вопрос может принадежать оному тесту
+  has_many :answers, dependent: :destroy       # один вопрос может иметь много ответов
 end
