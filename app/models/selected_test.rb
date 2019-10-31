@@ -1,0 +1,2 @@
+class SelectedTest < ApplicationRecord
+end
