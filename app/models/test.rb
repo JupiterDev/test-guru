@@ -1,11 +1,12 @@
 class Test < ApplicationRecord
-  belongs_to :category                                      # тест имеет одну категорию
-  has_many :questions, dependent: :destroy                  # у одного теста может быть много вопросов
+  belongs_to :category, optional: true                         # тест имеет одну категорию,
+                                                               # наличие связанных объектов не валидируется
+  has_many :questions, dependent: :destroy                     # у одного теста может быть много вопросов
 
-  has_many :selected_tests, , dependent: :destroy           # один тест могут проходит несколько пользователей
+  has_many :selected_tests, dependent: :destroy                # один тест могут проходит несколько пользователей
   has_many :users, through: :selected_tests
 
-  has_one :author, class_name: "User", dependent: :destroy  # тест принадлежит одному автору
+  belongs_to :author, class_name: "User", dependent: :destroy  # тест принадлежит одному автору
 
 	def self.tests_titles(category)
     Test.joins(:category)
