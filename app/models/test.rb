@@ -7,10 +7,14 @@ class Test < ApplicationRecord
 
   belongs_to :author, class_name: "User", dependent: :destroy
 
-	def self.tests_titles(category)
-    Test.joins(:category)
-        .where(categories: {title: category})
-        .order(id: :desc)
-        .pluck(:title)
-  end
+  scope :easy, -> { where(level: 0..1) }
+  scope :middle, -> { where(level: 2..4) }
+  scope :hard, -> { where(level: 5..Float::INFINITY) }
+
+  scope :tests_titles, -> (category) {joins(:category).where(categories: {title: category}).order(id: :desc).pluck(:title)}
+
+  validates :level, numericality: { only_integer: true, 
+                                    greater_than_or_equal_to: 0 }
+  validates :title, presence: true, uniqueness: { scope: :level,
+                                                  message: "the test should be unique" }
 end

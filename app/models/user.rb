@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
   has_many :created_tests, class_name: "Test", dependent: :destroy
 
+  validates :email, presence: true
+
   def active_tests(level)
     tests.where(level: level)
   end
