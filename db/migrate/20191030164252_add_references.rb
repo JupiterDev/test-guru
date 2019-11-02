@@ -14,5 +14,8 @@ class AddReferences < ActiveRecord::Migration[6.0]
 
     add_reference(:answers, :question, foreign_key: true)
     change_column_null(:answers, :question_id, false)
+
+    add_reference(:tests, :user, foreign_key: true)
+    change_column_null(:tests, :user_id, false)
   end
 end
