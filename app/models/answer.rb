@@ -1,3 +1,3 @@
 class Answer < ApplicationRecord
-	belongs_to :question        # ответ принадлежит одному вопросу 
+	belongs_to :question
 end
