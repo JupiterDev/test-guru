@@ -15,5 +15,5 @@ class Test < ApplicationRecord
   scope :middle, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
 
-  scope :tests_titles, -> (category) {joins(:category).where(categories: {title: category}).order(id: :desc)
+  scope :tests_titles, -> (category) {joins(:category).where(categories: {title: category}).order(id: :desc)}
 end
