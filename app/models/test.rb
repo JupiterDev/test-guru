@@ -1,17 +1,19 @@
 class Test < ApplicationRecord
-  belongs_to :category, optional: true                         # тест имеет одну категорию,
-                                                               # наличие связанных объектов не валидируется
-  has_many :questions, dependent: :destroy                     # у одного теста может быть много вопросов
+  belongs_to :category, optional: true
+  has_many :questions, dependent: :destroy
 
-  has_many :selected_tests, dependent: :destroy                # один тест могут проходит несколько пользователей
+  has_many :selected_tests, dependent: :destroy
   has_many :users, through: :selected_tests
 
-  belongs_to :author, class_name: "User", dependent: :destroy  # тест принадлежит одному автору
+  belongs_to :author, class_name: "User", dependent: :destroy
 
-	def self.tests_titles(category)
-    Test.joins(:category)
-        .where(categories: {title: category})
-        .order(id: :desc)
-        .pluck(:title)
-  end
+  validates :level, numericality: { only_integer: true, 
+                                    greater_than_or_equal_to: 0 }
+  validates :title, presence: true
+
+  scope :easy, -> { where(level: 0..1) }
+  scope :middle, -> { where(level: 2..4) }
+  scope :hard, -> { where(level: 5..Float::INFINITY) }
+
+  scope :tests_titles, -> (category) {joins(:category).where(categories: {title: category}).order(id: :desc)}
 end

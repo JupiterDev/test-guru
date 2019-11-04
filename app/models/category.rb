@@ -1,4 +1,7 @@
 class Category < ApplicationRecord
-	has_many :tests, dependent: :nullify    # в одной категории может быть много тестов,
-	                                        # внешний ключ будет установлен в NULL при удалении 
+	default_scope { order(title: :asc) }
+	
+	has_many :tests, dependent: :nullify
+
+	validates :title, presence: true
 end
