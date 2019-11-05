@@ -1,21 +1,22 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: :create
+  before_action :find_test, only: %i[index new create]
+  before_action :find_question, only: %i[show destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index
-    render plain: find_test.questions.pluck(:body)
+    render plain: @test.questions.pluck(:body)
   end
 
   def show
-    render plain: find_question.body
+    render plain: @question.body
   end
 
   def new
   end
   
   def create
-    @question = find_test.questions.create(question_params)
+    @question = @test.questions.create(question_params)
     redirect_to test_questions_path
   end
 
