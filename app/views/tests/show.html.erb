@@ -1,0 +1,13 @@
+<h1>Test</h1>
+
+<p>Test tilte: <%= @test.title %></p>
+<p>Test level: <%= @test.level %></p>
+<br>
+
+<h3>Questions</h3>
+<ul>
+	<% @test.questions.each do |question| %>
+		<li><%= question.body %></li>
+	<% end %>
+</ul>
+<%= link_to 'All tests', tests_path %>
