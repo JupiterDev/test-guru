@@ -10,4 +10,6 @@
 		<li><%= question.body %></li>
 	<% end %>
 </ul>
-<%= link_to 'All tests', tests_path %>
+
+<%= link_to 'Edit', edit_test_path(@test) %> | 
+<%= link_to 'Back', tests_path %>
