@@ -4,12 +4,12 @@
 <p>Test level: <%= @test.level %></p>
 <br>
 
+
 <h3>Questions</h3>
-<ul>
-	<% @test.questions.each do |question| %>
-		<li><%= question.body %></li>
-	<% end %>
-</ul>
+<p><%= render @test.questions %></p>
+<p>
+  <%= link_to 'New question', new_test_question_path(@test) %>
+</p>
 
 <%= link_to 'Edit', edit_test_path(@test) %> | 
 <%= link_to 'Back', tests_path %>
