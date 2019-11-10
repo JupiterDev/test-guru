@@ -6,7 +6,13 @@
 
 
 <h3>Questions</h3>
-<p><%= render @test.questions %></p>
+<table>
+  <tr>
+    <th>Questions</th>
+    <th colspan="3">Actions</th>
+    <%= render @test.questions %>
+  </tr>
+</table>
 <p>
   <%= link_to 'New question', new_test_question_path(@test) %>
 </p>
