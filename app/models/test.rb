@@ -1,11 +1,10 @@
 class Test < ApplicationRecord
   belongs_to :category, optional: true
-  has_many :questions, dependent: :destroy
+  belongs_to :author, class_name: "User"
 
+  has_many :questions, dependent: :destroy
   has_many :selected_tests, dependent: :destroy
   has_many :users, through: :selected_tests
-
-  belongs_to :author, class_name: "User", dependent: :destroy
 
   validates :level, numericality: { only_integer: true, 
                                     greater_than_or_equal_to: 0 }
