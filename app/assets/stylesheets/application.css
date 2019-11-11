@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.test_passage_succes {
+	color:green;
+}
+
+.test_passage_fail {
+	color:red;
+}

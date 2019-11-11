@@ -1,10 +1,10 @@
 <h1>The <%= @test_passage.test.title %>Test was Completed!</h1>
 	<% if @test_passage.test_passed? %>
-		<p style="color:green">Тест пройден успешно</p>
-		<p><%= @test_passage.success_rate %></p>
+		<p class="test_passage_succes">Тест пройден успешно</p>
+		<p>Правильно пройдено вопросов: <%= @test_passage.number_of_correct_questions %> из <%= @test_passage.number_of_all_questions %>.</p>
 	<% else %>
-		<p style="color:red">Тест не пройден</p>
-		<p><%= @test_passage.success_rate %></p>
+		<p class="test_passage_fail">Тест не пройден</p>
+		<p>Правильно пройдено вопросов: <%= @test_passage.number_of_correct_questions %> из <%= @test_passage.number_of_all_questions %>.</p>
 	<% end %>
 
 
