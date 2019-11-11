@@ -1,0 +1,11 @@
+<h1>The <%= @test_passage.test.title %>Test was Completed!</h1>
+	<% if @test_passage.test_passed? %>
+		<p class="test_passage_succes">Тест пройден успешно</p>
+		<p>Правильно пройдено вопросов: <%= @test_passage.number_of_correct_questions %> из <%= @test_passage.number_of_all_questions %>.</p>
+	<% else %>
+		<p class="test_passage_fail">Тест не пройден</p>
+		<p>Правильно пройдено вопросов: <%= @test_passage.number_of_correct_questions %> из <%= @test_passage.number_of_all_questions %>.</p>
+	<% end %>
+
+
+<%= link_to 'All tests', tests_path %>
