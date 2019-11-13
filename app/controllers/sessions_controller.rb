@@ -7,12 +7,12 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_back(fallback_location: root_path)
-      # не понял, как реализовать переход на запрашиваемую страницу
+      redirect_to cookies.delete(:target_path) || root_path
     else
       flash.now[:alert] = "Are you a Guru? Verify your Email and Password please"
       render :new
     end
+    session[:target_path] = nil
   end
 
   def destroy
