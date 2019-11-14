@@ -1,0 +1,8 @@
+<% if logged_in? %>
+	<span><%= link_to 'TestGuru', root_path %> | </span>
+	<span class="nav user">Welcome, <b><%= current_user.email %></b> Guru | </span>
+	<%= link_to 'Выход', logout_path, method: :delete %>
+<% else %>
+	<span><%= link_to 'Регистрация', signup_path %> | </span>
+	<%= link_to 'Авторизация', login_path %>
+<% end %>
