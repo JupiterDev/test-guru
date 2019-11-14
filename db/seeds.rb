@@ -7,8 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 users = User.create!([
-					 {username: "user1", email: "user@gmail.com"},
-					 {username: "admin", email: "admin@gmail.com"}
+					 {username: "user1", email: "user1@gmail.com", password: "qwerty"},
+					 {username: "user2", email: "user2@gmail.com", password: "qwerty"},
+					 {username: "admin", email: "admin@gmail.com", password: "qwerty"}
 					 ])
 
 categories = Category.create!([
@@ -19,12 +20,12 @@ categories = Category.create!([
   							  ])
 
 tests = Test.create!([
-					 {title: "test 1", level: rand(1..5), category: categories[0], author: users[0]},
-					 {title: "test 2", level: rand(1..5), category: categories[1], author: users[1]},
-					 {title: "test 3", level: rand(1..5), category: categories[3], author: users[1]},
-					 {title: "test 4", level: rand(1..5), category: categories[2], author: users[0]},
-					 {title: "test 5", level: rand(1..5), category: categories[2], author: users[0]},
-					 {title: "test 6", level: rand(1..5), category: categories[2], author: users[1]}
+					 {title: "test 1", level: rand(1..5), category: categories[0], author: User.first},
+					 {title: "test 2", level: rand(1..5), category: categories[1], author: User.first},
+					 {title: "test 3", level: rand(1..5), category: categories[3], author: User.first},
+					 {title: "test 4", level: rand(1..5), category: categories[2], author: User.first},
+					 {title: "test 5", level: rand(1..5), category: categories[2], author: User.first},
+					 {title: "test 6", level: rand(1..5), category: categories[2], author: User.first}
 					])
 
 questions = Question.create!([
@@ -47,8 +48,8 @@ answers = Answer.create!([
 						  {body: "some answer#2", correct: false, question: questions[3]}
 						])
 
-selected_tests = SelectedTest.create!([
-									   {user_id: users[0].id, test_id: tests[2].id},
-									   {user_id: users[1].id, test_id: tests[4].id},
-									   {user_id: users[0].id, test_id: tests[5].id}
+selected_tests = TestPassage.create!([
+									   {user_id: User.first.id, test_id: tests[2].id},
+									   {user_id: User.first.id, test_id: tests[4].id},
+									   {user_id: User.first.id, test_id: tests[5].id}
 									 ])
