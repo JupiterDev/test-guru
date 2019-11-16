@@ -2,10 +2,14 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  after_action :say_hello, only: [:create]
+
+  def create
+    super
+    say_hello
+  end
 
   def after_sign_in_path_for(user)
-		if user.is_a?(Admin)
+		if user.admin?
       admin_tests_path
     else
       tests_path
@@ -13,7 +17,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def say_hello
-    flash.notice = "Привет, #{current_user.first_name}!" if current_user.first_name
+    flash.notice = "Привет, #{current_user.full_name}!"
   end
 
   # GET /resource/sign_in
