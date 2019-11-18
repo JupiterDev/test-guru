@@ -1,4 +1,5 @@
 <li>
-	<b>Link:</b><%= link_to gist.url %><br/>
+	<b>Question:</b><%= link_to question_part(gist), admin_question_path(gist.question) %><br/>
+	<b>Link:</b><%= link_to gist_hash(gist.url), gist.url %><br/>
 	<b>User:</b> <%= gist.user.email %>
 </li>
