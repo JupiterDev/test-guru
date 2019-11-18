@@ -1,0 +1,14 @@
+ru:
+
+  hello: "Привет, мир"
+  
+  test_passages:
+    result:
+      header: "Тест %{title} успешно завершен!"
+    gist:
+      success: "Gist успешно сохранен! Ссылка: %{url}"
+      failure: "Во время сохранения gist произошла ошибка"
+  
+  services:
+    gist_question:
+      description: "Вопрос о %{title} от TestGuru"
