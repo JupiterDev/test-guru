@@ -12,3 +12,8 @@ ru:
   services:
     gist_question:
       description: "Вопрос о %{title} от TestGuru"
+
+  admin:
+    tests:
+      form_inline:
+        submit: "OK"
