@@ -9,47 +9,74 @@
 users = User.create!([
 					 {username: "user1", email: "user1@gmail.com", password: "qwerty"},
 					 {username: "user2", email: "user2@gmail.com", password: "qwerty"},
+					 {username: "user3", email: "user3@gmail.com", password: "qwerty"},
+					 {username: "user4", email: "user4@gmail.com", password: "qwerty"},
+					 {username: "user5", email: "user5@gmail.com", password: "qwerty"},
+					 {username: "user6", email: "user6@gmail.com", password: "qwerty"},
+					 {username: "user7", email: "user7@gmail.com", password: "qwerty"},
+					 {username: "user8", email: "user8@gmail.com", password: "qwerty"},
+					 {username: "user9", email: "user9@gmail.com", password: "qwerty"},
+					 {username: "user10", email: "user10@gmail.com", password: "qwerty"},
+					 {username: "user11", email: "user11@gmail.com", password: "qwerty"},
+					 {username: "user12", email: "user12@gmail.com", password: "qwerty"},
+					 {username: "user13", email: "user13@gmail.com", password: "qwerty"},
+					 {username: "user14", email: "user14@gmail.com", password: "qwerty"},
+					 {username: "user15", email: "user15@gmail.com", password: "qwerty"},
 					 {username: "admin", email: "admin@gmail.com", password: "qwerty"}
 					 ])
 
 categories = Category.create!([
-							   {title: "math"},
-							   {title: "routing and switching"},
-							   {title: "backend programming"},
-							   {title: "frontend programming"},
+							   {title: "ruby"},
+							   {title: "python"}
   							  ])
 
 tests = Test.create!([
-					 {title: "test 1", level: rand(1..5), category: categories[0], author: User.first},
-					 {title: "test 2", level: rand(1..5), category: categories[1], author: User.first},
-					 {title: "test 3", level: rand(1..5), category: categories[3], author: User.first},
-					 {title: "test 4", level: rand(1..5), category: categories[2], author: User.first},
-					 {title: "test 5", level: rand(1..5), category: categories[2], author: User.first},
-					 {title: "test 6", level: rand(1..5), category: categories[2], author: User.first}
+					 {title: "ruby 1", level: 1, category: categories[0], author: User.last},
+					 {title: "ruby 2", level: 2, category: categories[0], author: User.last},
+					 {title: "python 1", level: 1, category: categories[1], author: User.last},
+					 {title: "python 2", level: 2, category: categories[1], author: User.last}
 					])
 
 questions = Question.create!([
-							{body: "some question", test: tests[0]},
-							{body: "some question", test: tests[1]},
-							{body: "some question", test: tests[2]},
-							{body: "some question", test: tests[2]}
+							{body: "ruby 1 q1", test: tests[0]},
+							{body: "ruby 1 q2", test: tests[0]},
+							{body: "ruby 2 q1", test: tests[1]},
+							{body: "ruby 2 q1", test: tests[1]},
+							{body: "python 1 q1", test: tests[2]},
+							{body: "python 1 q2", test: tests[2]},
+							{body: "python 2 q1", test: tests[3]},
+							{body: "python 2 q2", test: tests[3]}
 							])
 
 answers = Answer.create!([
-						  {body: "some answer#12", correct: true, question: questions[0]},
-						  {body: "some answer#23", correct: false, question: questions[1]},
-						  {body: "some answer#84", correct: true, question: questions[2]},
-						  {body: "some answer#23", correct: false, question: questions[3]},
-						  {body: "some answer#46", correct: true, question: questions[2]},
-						  {body: "some answer#73", correct: false, question: questions[1]},
-						  {body: "some answer#18", correct: true, question: questions[0]},
-						  {body: "some answer#73", correct: false, question: questions[3]},
-						  {body: "some answer#82", correct: true, question: questions[0]},
-						  {body: "some answer#2", correct: false, question: questions[3]}
+						  {body: "ruby 1 q1 a1", correct: true, question: questions[0]},
+						  {body: "ruby 1 q1 a2", correct: false, question: questions[0]},
+						  {body: "ruby 1 q2 a1", correct: true, question: questions[1]},
+						  {body: "ruby 1 q2 a2", correct: false, question: questions[1]},
+						  {body: "ruby 2 q1 a1", correct: true, question: questions[2]},
+						  {body: "ruby 2 q1 a2", correct: false, question: questions[2]},
+						  {body: "ruby 2 q1 a1", correct: true, question: questions[3]},
+						  {body: "ruby 2 q1 a2", correct: false, question: questions[3]},
+						  {body: "python 1 q1 a1", correct: true, question: questions[4]},
+							{body: "python 1 q1 a2", correct: false, question: questions[4]},
+							{body: "python 1 q2 a1", correct: true, question: questions[5]},
+							{body: "python 1 q2 a2", correct: false, question: questions[5]},
+							{body: "python 2 q1 a1", correct: true, question: questions[6]},
+							{body: "python 2 q1 a2", correct: false, question: questions[6]},
+							{body: "python 2 q2 a1", correct: true, question: questions[7]},
+						  {body: "python 2 q2 a2", correct: false, question: questions[7]}
 						])
 
-selected_tests = TestPassage.create!([
-									   {user_id: User.first.id, test_id: tests[2].id},
-									   {user_id: User.first.id, test_id: tests[4].id},
-									   {user_id: User.first.id, test_id: tests[5].id}
-									 ])
+# selected_tests = TestPassage.create!([
+# 									   {user_id: User.first.id, test_id: tests[2].id},
+# 									   {user_id: User.first.id, test_id: tests[4].id},
+# 									   {user_id: User.first.id, test_id: tests[5].id}
+# 									 ])
+
+badges = Badge.create!([
+	{title: "Успешно прошел все тесты категории Ruby", pic_url: "https://google.com", rule: "category", criterion: "ruby"},
+	{title: "Успешно прошел все тесты категории Python", pic_url: "https://google.com", rule: "category", criterion: "python"},
+	{title: "Успешно прошел тест с первого раза", pic_url: "https://google.com", rule: "first_attempt", criterion: ""},
+	{title: "Успешно прошел все тесты 1 уровня", pic_url: "https://google.com", rule: "level", criterion: "1"},
+	{title: "Успешно прошел все тесты 2 уровня", pic_url: "https://google.com", rule: "level", criterion: "2"},
+])

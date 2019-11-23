@@ -1,9 +1,10 @@
 class User < ApplicationRecord
 
   has_many :test_passages, dependent: :destroy
-  has_many :tests, through: :test_passages
-  has_many :authored_tests, class_name: "Test", foreign_key: "author_id", dependent: :destroy
-  has_many :gists, dependent: :destroy
+  has_many :tests, through: :test_passages, dependent: :nullify
+  has_many :authored_tests, class_name: "Test", foreign_key: "author_id"
+  has_many :gists
+  has_and_belongs_to_many :badges
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable

@@ -17,3 +17,13 @@ ru:
     tests:
       form_inline:
         submit: "OK"
+  
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Ошибка валидации записи: %{errors}"
+      models:
+        category:
+          attributes:
+            badge:
+              required: "Ошибка!"
