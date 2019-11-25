@@ -14,7 +14,7 @@
 
   <p>
     <%= form.label :rule, "Правило" %><br>
-    <%= form.text_field :rule, id: :rule %>
+    <%= form.select(:rule, @badge.rules) %>
   </p>
 
   <p>

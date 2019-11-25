@@ -1,11 +1,10 @@
 class CreateBadgesUsers < ActiveRecord::Migration[6.0]
   def change
-    create_table :badges_users, id: false do |t|
-      t.bigint :badge_id
-      t.bigint :user_id
-    end
+    create_table :rewards do |t|
+      t.references :badge, foreign_key: true
+      t.references :user, foreign_key: true
 
-    add_index :badges_users, :badge_id
-    add_index :badges_users, :user_id
+      t.timestamps
+    end
   end
 end

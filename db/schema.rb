@@ -30,13 +30,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_194223) do
     t.string "criterion"
   end
 
-  create_table "badges_users", id: false, force: :cascade do |t|
-    t.bigint "badge_id"
-    t.bigint "user_id"
-    t.index ["badge_id"], name: "index_badges_users_on_badge_id"
-    t.index ["user_id"], name: "index_badges_users_on_user_id"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -61,6 +54,15 @@ ActiveRecord::Schema.define(version: 2019_11_21_194223) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "test_id", null: false
     t.index ["test_id"], name: "index_questions_on_test_id"
+  end
+
+  create_table "rewards", force: :cascade do |t|
+    t.integer "badge_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["badge_id"], name: "index_rewards_on_badge_id"
+    t.index ["user_id"], name: "index_rewards_on_user_id"
   end
 
   create_table "test_passages", force: :cascade do |t|
@@ -120,6 +122,8 @@ ActiveRecord::Schema.define(version: 2019_11_21_194223) do
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"
+  add_foreign_key "rewards", "badges"
+  add_foreign_key "rewards", "users"
   add_foreign_key "test_passages", "questions", column: "current_question_id"
   add_foreign_key "test_passages", "tests"
   add_foreign_key "test_passages", "users"

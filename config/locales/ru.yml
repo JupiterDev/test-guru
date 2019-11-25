@@ -27,3 +27,11 @@ ru:
           attributes:
             badge:
               required: "Ошибка!"
+  
+  badge:
+    fields:
+      title: "НАЗВАНИЕ"
+      pic_url: "КАРТИНКА"
+      rule: "ПРАВИЛО"
+      criterion: "КРИТЕРИЙ"
+      actions: "ДЕЙСТВИЯ"
