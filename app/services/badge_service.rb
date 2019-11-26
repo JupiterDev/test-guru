@@ -13,7 +13,7 @@ class BadgeService
 
 	def category(category)
 		return unless @test.category.title == category && @test_passage.test_passed?
-		Test.tests_by_category(category).count == @user.test_passages.select{|passage| passage.test.category.title == category}.select{|passage| passage.test_passed? }.count
+		Test.tests_by_category(category).count == @user.tests.success.tests_by_category(category).count
 	end
 
 	def first_attempt(criterion)

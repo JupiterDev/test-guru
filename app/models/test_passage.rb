@@ -13,11 +13,8 @@ class TestPassage < ApplicationRecord
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
+    self.passed = test_passed?
     save!
-  end
-
-  def belong_to_category?(category)
-    test.where(category: category)
   end
 
   def current_question_number

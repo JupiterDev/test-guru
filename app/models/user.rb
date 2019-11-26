@@ -1,10 +1,13 @@
 class User < ApplicationRecord
 
   has_many :test_passages, dependent: :destroy
-  has_many :tests, through: :test_passages, dependent: :nullify
+  has_many :tests, through: :test_passages, dependent: :nullify do
+    def success
+      where("test_passages.passed = ?", true)
+    end
+  end
   has_many :authored_tests, class_name: "Test", foreign_key: "author_id"
   has_many :gists, dependent: :destroy
-  # has_and_belongs_to_many :badges
   has_many :rewards, dependent: :destroy
   has_many :badges, through: :rewards
 
