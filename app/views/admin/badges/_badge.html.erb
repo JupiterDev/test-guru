@@ -4,10 +4,10 @@
 	<td><%= badge.rule %></td>
 	<td><%= badge.criterion %></td>
 	<td>
-		<%= link_to 'Edit', edit_admin_badge_path(badge)%>
+		<%= link_to t('link.edit'), edit_admin_badge_path(badge)%>
   </td>
 	<td>
-    <%= link_to 'Delete', 
+    <%= link_to t('link.delete'), 
                 admin_badge_path(badge),
                 method: :delete,
                 data: { confirm: "Are you sure?" } %>

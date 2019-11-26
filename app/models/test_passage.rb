@@ -16,6 +16,10 @@ class TestPassage < ApplicationRecord
     save!
   end
 
+  def belong_to_category?(category)
+    test.where(category: category)
+  end
+
   def current_question_number
     test.questions.order(:id).where('id < ?', current_question.id).count + 1
   end

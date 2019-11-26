@@ -29,9 +29,31 @@ ru:
               required: "Ошибка!"
   
   badge:
+    rule:
+      category: Завершены все тесты категории
+      first_attempt: Тест завершен с первой попытки
+      level: Завершены все тесты уровня
+    title: 
+      main: "Бэйджи"
+      create: "Создать новый бэйдж"
+      show: "Бэйдж"
+      edit: "Изменить бэйдж"
     fields:
       title: "НАЗВАНИЕ"
       pic_url: "КАРТИНКА"
       rule: "ПРАВИЛО"
       criterion: "КРИТЕРИЙ"
       actions: "ДЕЙСТВИЯ"
+    form:
+      title: "Название"
+      pic_url: "Изображение (ссылка)"
+      rule: "Правило"
+      criterion: "Критерий"
+      submit: "Создать"
+    link:
+      new: "New badge"
+  
+  link:
+    edit: "Изменить"
+    back: "Назад"
+    delete: "Удалить"

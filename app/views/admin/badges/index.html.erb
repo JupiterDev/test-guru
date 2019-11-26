@@ -1,17 +1,17 @@
-<h2>Badges</h2>
+<h2><%= t 'badge.title.main' %></h2>
 
 <p>
-  <%= link_to "New badge", new_admin_badge_path %>
+  <%= link_to t('badge.link.new'), new_admin_badge_path %>
 </p>
 
 <table>
 	<thead>
   	<tr>
-    	<th> <%= I18n.t 'badge.fields.title' %> </th>
-    	<th> <%= I18n.t 'badge.fields.pic_url' %> </th>
-			<th> <%= I18n.t 'badge.fields.rule' %> </th>
-    	<th> <%= I18n.t 'badge.fields.criterion' %> </th>
-			<th colspan="2"><%= I18n.t 'badge.fields.actions' %></th>
+    	<th> <%= t 'badge.fields.title' %> </th>
+    	<th> <%= t 'badge.fields.pic_url' %> </th>
+			<th> <%= t 'badge.fields.rule' %> </th>
+    	<th> <%= t 'badge.fields.criterion' %> </th>
+			<th colspan="2"><%= t 'badge.fields.actions' %></th>
   	</tr> 
   </thead>
   <tbody>

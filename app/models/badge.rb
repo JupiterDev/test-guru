@@ -9,7 +9,4 @@ class Badge < ApplicationRecord
 	validates :pic_url, presence: true
 	validates :rule, inclusion: { in: BADGE_RULES }, uniqueness: { scope: :criterion }
 	
-	def rules
-    BADGE_RULES
-  end
 end
