@@ -13,7 +13,7 @@ class BadgeService
 
 	def category(category)
 		return unless @test.category.title == category && @test_passage.test_passed?
-		Test.tests_by_category(category).count == @user.tests.success.tests_by_category(category).count
+		Test.tests_by_category(category).count == @user.tests.success.tests_by_category(category).uniq.count
 	end
 
 	def first_attempt(criterion)
@@ -22,6 +22,6 @@ class BadgeService
 
 	def level(level)
 		return unless @test.level == level.to_i && @test_passage.test_passed?
-		Test.where(level: level).to_ary == @user.tests.where(level: level).uniq
+		Test.where(level: level).count == @user.tests.success.where(level: level).uniq.count
 	end
 end
