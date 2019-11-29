@@ -1,0 +1,20 @@
+<h2><%= t 'badge.title.main' %></h2>
+
+<p>
+  <%= link_to t('badge.link.new'), new_admin_badge_path %>
+</p>
+
+<table>
+	<thead>
+  	<tr>
+    	<th> <%= t 'badge.fields.title' %> </th>
+    	<th> <%= t 'badge.fields.pic_url' %> </th>
+			<th> <%= t 'badge.fields.rule' %> </th>
+    	<th> <%= t 'badge.fields.criterion' %> </th>
+			<th colspan="2"><%= t 'badge.fields.actions' %></th>
+  	</tr> 
+  </thead>
+  <tbody>
+		<%= render @badges %>
+	</tbody>
+</table>

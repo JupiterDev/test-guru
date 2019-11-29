@@ -1,0 +1,8 @@
+<h1><%= t 'badge.title.main' %></h1>
+
+<p>Badge tilte: <%= @badge.title %></p>
+<p>Badge pic: <%= @badge.pic_url %></p>
+<br>
+
+<%= link_to t('link.edit'), edit_admin_badge_path(@badge) %> | 
+<%= link_to t('link.back'), admin_badges_path %>
