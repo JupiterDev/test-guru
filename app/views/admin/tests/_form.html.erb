@@ -21,5 +21,10 @@
     <%= form.collection_select :author_id, User.all, :id, :username, promt: true %>
   </p>
 
+  <p>
+    <%= form.label :timer %><br>
+    <%= form.text_field :timer, id: :test_timer %>
+  </p>
+
   <p><%= form.submit %></p>
 <% end %>

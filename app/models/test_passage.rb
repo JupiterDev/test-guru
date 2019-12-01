@@ -8,7 +8,12 @@ class TestPassage < ApplicationRecord
   SUCCESS_RATIO = 0.85
 
   def completed?
+    current_question = nil if timeout?
     current_question.nil?
+  end
+
+  def timeout?
+    Time.current > created_at + test.timer * 60
   end
 
   def accept!(answer_ids)
@@ -35,6 +40,10 @@ class TestPassage < ApplicationRecord
 
   def test_passed?
     correct_questions / test.questions.size >= SUCCESS_RATIO
+  end
+
+  def time_left
+    (created_at + test.timer * 60 - Time.current).to_i
   end
 
   private
