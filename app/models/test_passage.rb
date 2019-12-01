@@ -8,18 +8,18 @@ class TestPassage < ApplicationRecord
   SUCCESS_RATIO = 0.85
 
   def completed?
-    current_question = nil if timeout?
     current_question.nil?
-  end
-
-  def timeout?
-    Time.current > created_at + test.timer * 60
   end
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids)
     self.passed = test_passed?
+    self.current_question = nil if timeout?
     save!
+  end
+
+  def timeout?
+    Time.current >= created_at + test.timer.seconds
   end
 
   def current_question_number
@@ -66,7 +66,7 @@ class TestPassage < ApplicationRecord
     if new_record?
       test.questions.first
     else
-      test.questions.order(:id).where('id > ?', current_question.id).first
+      test.questions.order(:id).where('id > ?', current_question.id).first if !current_question.nil?
     end
   end
 end
